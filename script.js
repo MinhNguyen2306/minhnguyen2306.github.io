@@ -3,64 +3,52 @@
 ====================== */
 const faders = document.querySelectorAll(".fade");
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
-  });
-}, { threshold: 0.2 });
+const appearOnScroll = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  },
+  {
+    threshold: 0.15,
+  }
+);
 
-faders.forEach(el => observer.observe(el));
-
-/* ======================
-   ABOUT PANEL
-====================== */
-const aboutPanel = document.getElementById("aboutPanel");
-const aboutBtn = document.getElementById("aboutBtn");
-const readMore = document.getElementById("readMore");
-const closeAbout = document.getElementById("closeAbout");
-
-if (aboutBtn) {
-  aboutBtn.onclick = (e) => {
-    e.preventDefault();
-    aboutPanel.classList.add("open");
-  };
-}
-
-if (readMore) {
-  readMore.onclick = () => {
-    aboutPanel.classList.add("open");
-  };
-}
-
-if (closeAbout) {
-  closeAbout.onclick = () => {
-    aboutPanel.classList.remove("open");
-  };
-}
+faders.forEach((fade) => {
+  appearOnScroll.observe(fade);
+});
 
 /* ======================
    DARK / LIGHT MODE
 ====================== */
-const toggle = document.getElementById("themeToggle");
-const savedTheme = localStorage.getItem("theme");
+const toggleBtn = document.getElementById("themeToggle");
 
-if (savedTheme === "dark") {
-  document.body.classList.add("dark");
-  toggle.textContent = "☀️";
-}
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
 
-if (toggle) {
-  toggle.onclick = () => {
-    document.body.classList.toggle("dark");
+  toggleBtn.textContent = document.body.classList.contains("dark")
+    ? "☀️"
+    : "🌙";
+});
 
-    if (document.body.classList.contains("dark")) {
-      localStorage.setItem("theme", "dark");
-      toggle.textContent = "☀️";
-    } else {
-      localStorage.setItem("theme", "light");
-      toggle.textContent = "🌙";
-    }
-  };
-}
+/* ======================
+   ABOUT SLIDE PANEL
+====================== */
+const aboutBtn = document.getElementById("aboutBtn");
+const aboutPanel = document.getElementById("aboutPanel");
+const closeAbout = document.getElementById("closeAbout");
+const readMore = document.getElementById("readMore");
+
+aboutBtn.addEventListener("click", () => {
+  aboutPanel.classList.add("open");
+});
+
+readMore.addEventListener("click", () => {
+  aboutPanel.classList.add("open");
+});
+
+closeAbout.addEventListener("click", () => {
+  aboutPanel.classList.remove("open");
+});
