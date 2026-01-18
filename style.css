@@ -18,9 +18,16 @@ html {
 
 body {
   font-family: "Segoe UI", sans-serif;
-  background: var(--bg-dark);
-  color: var(--text-dark);
+  background: #ffffff;
+  color: #111827;
+  transition: background 0.4s, color 0.4s;
 }
+
+body.dark {
+  background: #000000;
+  color: #f9fafb;
+}
+
 
 /* ================= NAV ================= */
 nav {
