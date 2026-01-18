@@ -1,66 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Minh | Data Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: auto;
-            padding: 40px;
-            background-color: #f5f7fa;
-            color: #2c3e50;
-        }
-        h1 { font-size: 36px; }
-        .subtitle {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 30px;
-        }
-        .section { margin-bottom: 40px; }
-        ul { line-height: 1.8; }
-        a { color: #1a73e8; text-decoration: none; }
-        footer {
-            margin-top: 60px;
-            font-size: 14px;
-            color: #888;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minh Nguyen | Data Portfolio</title>
+
+<style>
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f9fafb;
+  color: #1f2933;
+  line-height: 1.6;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 15px 0;
+  z-index: 1000;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 30px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #1f2933;
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: #2563eb;
+}
+
+/* ===== SECTION ===== */
+section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 100px 20px;
+}
+
+section:not(:first-child) {
+  border-top: 1px solid #e5e7eb;
+}
+
+/* ===== HERO ===== */
+#home {
+  padding-top: 140px;
+}
+
+#home h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+#home p {
+  font-size: 18px;
+  color: #4b5563;
+}
+
+/* ===== HEADINGS ===== */
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* ===== SKILLS ===== */
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.skill {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+/* ===== PROJECTS ===== */
+.project {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 20px;
+}
+
+.project h3 {
+  margin-bottom: 8px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 40px;
+  font-size: 14px;
+  color: #6b7280;
+}
+</style>
 </head>
+
 <body>
 
-<h1>Minh Nguyen</h1>
-<p class="subtitle">Aspiring Data Analyst / Data Engineer</p>
+<!-- ===== NAVBAR ===== -->
+<nav>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-<div class="section">
-    <h2>👋 About Me</h2>
-    <p>
-        This is my personal website.  
-        I will add my data projects here gradually.
-    </p>
-</div>
+<!-- ===== HOME ===== -->
+<section id="home">
+  <h1>Minh Nguyen</h1>
+  <p>Aspiring Data Analyst / Data Engineer</p>
+</section>
 
-<div class="section">
-    <h2>🛠 Skills</h2>
-    <ul>
-        <li>SQL</li>
-        <li>Python</li>
-        <li>Power BI / Tableau</li>
-        <li>ETL, AWS, SQL Server</li>
-    </ul>
-</div>
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <h2>About Me</h2>
+  <p>
+    I am transitioning into Data Analytics and Data Engineering.
+    This website showcases my skills and projects as I build my data career.
+  </p>
+</section>
 
-<div class="section">
-    <h2>🚧 Projects</h2>
-    <p>Coming soon.</p>
-</div>
+<!-- ===== SKILLS ===== -->
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div class="skill">SQL</div>
+    <div class="skill">Python</div>
+    <div class="skill">Power BI / Tableau</div>
+    <div class="skill">ETL & Data Pipelines</div>
+    <div class="skill">AWS</div>
+    <div class="skill">SQL Server</div>
+  </div>
+</section>
 
-<div class="section">
-    <h2>📬 Contact</h2>
-    <p>Email: your-email@gmail.com</p>
-    <p>GitHub: https://github.com/minhnguyen2306</p>
-</div>
+<!-- ===== PROJECTS ===== -->
+<section id="projects">
+  <h2>Projects</h2>
+
+  <div class="project">
+    <h3>Sales Data Analysis</h3>
+    <p>SQL-based analysis to identify sales trends.</p>
+  </div>
+
+  <div class="project">
+    <h3>Web Scraping Job Data</h3>
+    <p>Python & Selenium to collect job postings.</p>
+  </div>
+
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: your-email@gmail.com</p>
+  <p>GitHub: https://github.com/minhnguyen2306</p>
+</section>
 
 <footer>
-    © 2026 Minh N
+  © 2026 Minh Nguyen
+</footer>
+
+</body>
+</html>
