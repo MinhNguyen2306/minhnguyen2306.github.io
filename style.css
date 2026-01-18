@@ -1,18 +1,11 @@
 :root {
   --primary: #2563eb;
-  --accent: #22c55e;
-
-  --bg: #f8fafc;
-  --card: #ffffff;
-  --text: #1f2937;
-  --muted: #6b7280;
-
   --bg-dark: #000000;
-  --card-dark: #0a0a0a;
-  --text-dark: #e5e7eb;
+  --text-dark: #f9fafb;
   --muted-dark: #9ca3af;
 }
 
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -23,13 +16,6 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: "Segoe UI", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-  transition: background 0.4s, color 0.4s;
-}
-
-body.dark {
   background: var(--bg-dark);
   color: var(--text-dark);
 }
@@ -39,162 +25,116 @@ nav {
   position: fixed;
   width: 100%;
   top: 0;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid #e5e7eb;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
   z-index: 1000;
 }
 
-body.dark nav {
-  background: rgba(0,0,0,0.85);
-  border-bottom: 1px solid #1f2937;
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 600;
 }
 
 nav ul {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 28px;
-  padding: 16px;
   list-style: none;
+  gap: 24px;
+  align-items: center;
 }
 
 nav a {
   text-decoration: none;
-  font-weight: 600;
-  color: inherit;
+  color: var(--muted-dark);
+  font-weight: 500;
 }
 
 nav a:hover {
-  color: var(--primary);
+  color: var(--text-dark);
 }
 
-/* ================= SECTIONS ================= */
-section {
-  max-width: 1000px;
-  margin: auto;
-  padding: 140px 20px;
-}
-
-section p {
-  color: var(--muted);
-}
-
-body.dark section p {
-  color: var(--muted-dark);
-}
-
-/* ================= HEADINGS ================= */
-h1 { font-size: 46px; }
-h2 { font-size: 30px; margin-bottom: 20px; }
-
-/* ================= BUTTON ================= */
-button {
-  padding: 12px 26px;
-  border-radius: 8px;
+nav button {
+  background: none;
   border: none;
-  background: var(--primary);
-  color: #fff;
-  font-weight: 600;
+  color: var(--muted-dark);
+  font-size: 18px;
   cursor: pointer;
 }
 
-button:hover {
-  transform: translateY(-2px);
+/* ================= HERO ================= */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-/* ================= CARD ================= */
-.card {
-  background: var(--card);
-  border-radius: 16px;
-  padding: 26px;
+.hero-content {
+  max-width: 700px;
+}
+
+.avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3px solid #111;
   margin-bottom: 24px;
-  border: 1px solid #e5e7eb;
+}
+
+h1 {
+  font-size: 46px;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  color: var(--muted-dark);
+  font-size: 18px;
+  margin-bottom: 32px;
+}
+
+/* ================= BUTTONS ================= */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.btn {
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
   transition: 0.3s;
 }
 
-.card:hover {
-  transform: translateY(-6px);
+.btn.primary {
+  background: white;
+  color: black;
 }
 
-body.dark .card {
-  background: var(--card-dark);
-  border-color: #1f2937;
+.btn.primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn.secondary {
+  border: 1px solid #333;
+  color: white;
+}
+
+.btn.secondary:hover {
+  background: #111;
 }
 
 /* ================= FADE ================= */
 .fade {
   opacity: 0;
-  transform: translateY(50px);
-  transition: 0.9s ease;
-}
-
-.fade.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ================= ABOUT PANEL ================= */
-.about-panel {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 100%;
-  height: 100%;
-  background: inherit;
-  transition: 0.6s;
-  overflow-y: auto;
-  z-index: 2000;
-}
-
-.about-panel.open {
-  right: 0;
-}
-
-.about-content {
-  max-width: 1000px;
-  margin: auto;
-  padding: 140px 20px;
-}
-
-.close {
-  position: fixed;
-  top: 20px;
-  right: 30px;
-  font-size: 28px;
-  cursor: pointer;
-}
-
-/* ================= TIMELINE ================= */
-.timeline {
-  border-left: 3px solid var(--primary);
-  padding-left: 30px;
-}
-
-.timeline-item {
-  margin-bottom: 30px;
-}
-
-.timeline-item span {
-  font-weight: bold;
-  color: var(--primary);
-}
-
-/* ================= CONTACT ================= */
-.icons a {
-  font-size: 28px;
-  margin-right: 24px;
-  color: var(--muted);
-}
-
-.icons a:hover {
-  color: var(--primary);
-  transform: scale(1.2);
-}
-
-/* ================= FOOTER ================= */
-footer {
-  text-align: center;
-  padding: 50px;
-  color: var(--muted);
-}
+  transform: translateY(40px);
+  t
