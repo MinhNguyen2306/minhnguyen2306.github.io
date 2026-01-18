@@ -199,3 +199,43 @@ h2 {
   opacity: 1;
   transform: translateY(0);
 }
+/* ================= PROJECTS ================= */
+.projects {
+  text-align: center;
+}
+
+.projects-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.project-card {
+  height: 180px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #374151;
+  transition: all 0.35s ease;
+}
+
+/* Hover */
+.project-card:hover {
+  transform: translateY(-6px);
+  background: rgba(0,0,0,0.07);
+}
+
+/* Dark mode */
+body.dark .project-card {
+  background: rgba(255,255,255,0.06);
+  color: #e5e7eb;
+}
+
+body.dark .project-card:hover {
+  background: rgba(255,255,255,0.1);
+}
+
