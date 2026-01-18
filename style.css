@@ -154,8 +154,10 @@ h2 {
 /* ================= FADE IN ================= */
 .fade {
   opacity: 0;
-  transform: translateY(40px);
-  transition: all 1s ease;
+  transform: translateY(70px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
 }
 
 .fade.show {
