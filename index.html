@@ -53,7 +53,7 @@ nav a:hover {
 section {
   max-width: 1000px;
   margin: auto;
-  padding: 110px 20px;
+  padding: 120px 20px;
 }
 
 section:not(:first-child) {
@@ -62,7 +62,7 @@ section:not(:first-child) {
 
 /* ===== HERO ===== */
 #home {
-  padding-top: 160px;
+  padding-top: 170px;
 }
 
 #home h1 {
@@ -81,32 +81,20 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* ===== BUTTONS ===== */
-.toggle-btn, .modal-btn {
-  margin-top: 15px;
+/* ===== BUTTON ===== */
+.primary-btn {
+  margin-top: 20px;
   background: #2563eb;
   color: white;
   border: none;
-  padding: 10px 16px;
+  padding: 12px 18px;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
 }
 
-.toggle-btn:hover, .modal-btn:hover {
+.primary-btn:hover {
   background: #1d4ed8;
-}
-
-/* ===== ABOUT COLLAPSE ===== */
-.collapse {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.6s ease;
-  margin-top: 10px;
-}
-
-.collapse.open {
-  max-height: 600px;
 }
 
 /* ===== SKILLS ===== */
@@ -136,38 +124,52 @@ h2 {
   margin-bottom: 8px;
 }
 
-/* ===== MODAL ===== */
-.modal {
-  display: none;
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 40px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ===== ABOUT SLIDE PAGE ===== */
+.about-page {
   position: fixed;
-  z-index: 2000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
+  inset: 0;
+  background: #f9fafb;
+  z-index: 3000;
+  transform: translateY(100%);
+  transition: transform 0.6s ease;
+  overflow-y: auto;
 }
 
-.modal-content {
-  background: white;
-  max-width: 700px;
-  margin: 8% auto;
-  padding: 30px;
-  border-radius: 10px;
-  position: relative;
+.about-page.open {
+  transform: translateY(0);
 }
 
-.close {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 24px;
+.about-content {
+  max-width: 800px;
+  margin: auto;
+  padding: 120px 20px;
+}
+
+.about-content h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-size: 16px;
   cursor: pointer;
+  margin-bottom: 30px;
 }
 
 /* ===== TIMELINE ===== */
 .timeline {
-  margin-top: 20px;
+  margin-top: 30px;
   border-left: 3px solid #2563eb;
   padding-left: 20px;
 }
@@ -180,14 +182,6 @@ h2 {
   font-weight: bold;
   color: #2563eb;
 }
-
-/* ===== FOOTER ===== */
-footer {
-  text-align: center;
-  padding: 40px;
-  font-size: 14px;
-  color: #6b7280;
-}
 </style>
 </head>
 
@@ -197,7 +191,7 @@ footer {
 <nav>
   <ul>
     <li><a href="#home">Home</a></li>
-    <li><a href="#about" onclick="toggleAbout(true)">About</a></li>
+    <li><a href="#about" onclick="openAboutPage()">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -210,28 +204,17 @@ footer {
   <p>Aspiring Data Analyst / Data Engineer</p>
 </section>
 
-<!-- ===== ABOUT ===== -->
+<!-- ===== ABOUT PREVIEW ===== -->
 <section id="about">
   <h2>About Me</h2>
-
   <p>
-    I am transitioning into Data Analytics and Data Engineering.
+    I am transitioning into Data Analytics and Data Engineering, with a background
+    in English Studies that helps me communicate data insights clearly.
   </p>
 
-  <button class="toggle-btn" onclick="toggleAbout()">
+  <button class="primary-btn" onclick="openAboutPage()">
     Read more
   </button>
-
-  <div id="about-more" class="collapse">
-    <p>
-      My background is in English Studies, which helps me communicate insights clearly.
-    </p>
-    <p>
-      I work with SQL, Python, ETL pipelines, and BI tools to turn data into value.
-    </p>
-
-    <button class="modal-btn" onclick="openModal()">View full profile</button>
-  </div>
 </section>
 
 <!-- ===== SKILLS ===== -->
@@ -253,12 +236,12 @@ footer {
 
   <div class="project">
     <h3>Sales Data Analysis</h3>
-    <p>SQL-based analysis to identify sales trends.</p>
+    <p>SQL-based analysis to identify trends and insights.</p>
   </div>
 
   <div class="project">
     <h3>Web Scraping Job Data</h3>
-    <p>Python & Selenium to collect job postings.</p>
+    <p>Python & Selenium pipeline to collect job postings.</p>
   </div>
 </section>
 
@@ -273,12 +256,54 @@ footer {
   © 2026 Minh Nguyen
 </footer>
 
-<!-- ===== MODAL ===== -->
-<div id="aboutModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
+<!-- ===== ABOUT FULL PAGE ===== -->
+<div id="aboutPage" class="about-page">
+  <div class="about-content">
 
-    <h2>About Me – Full Profile</h2>
+    <button class="back-btn" onclick="closeAboutPage()">← Back</button>
+
+    <h1>About Me</h1>
+
     <p>
-      I am an English Studies graduate transitioning into Data Analytics and Data Engineering,
-      combining communication skills with da
+      I am an English Studies graduate transitioning into Data Analytics and Data Engineering.
+      My strength lies in combining analytical thinking with clear communication.
+    </p>
+
+    <p>
+      I work with SQL, Python, ETL pipelines, cloud platforms, and BI tools to transform raw data
+      into meaningful insights that support decision-making.
+    </p>
+
+    <h2>Education & Career Timeline</h2>
+
+    <div class="timeline">
+      <div class="event">
+        <span>2022</span>
+        <p>English Studies – University</p>
+      </div>
+      <div class="event">
+        <span>2024</span>
+        <p>Started Data Analytics (SQL, Python)</p>
+      </div>
+      <div class="event">
+        <span>2025</span>
+        <p>ETL pipelines, AWS, BI dashboards projects</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== SCRIPT ===== -->
+<script>
+function openAboutPage() {
+  document.getElementById("aboutPage").classList.add("open");
+}
+
+function closeAboutPage() {
+  document.getElementById("aboutPage").classList.remove("open");
+}
+</script>
+
+</body>
+</html>
