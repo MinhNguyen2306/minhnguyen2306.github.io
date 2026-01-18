@@ -155,9 +155,20 @@ h1 {
 }
 
 .btn.secondary {
-  border: 1px solid #333;
-  color: #ffffff;
+  border: 1px solid currentColor;
+  color: #111827;
 }
+
+body.dark .btn.secondary {
+  color: #f9fafb;
+  border-color: #444;
+}
+
+body.dark .btn.secondary:hover {
+  background: #111;
+}
+
+
 
 .btn.secondary:hover {
   background: #111111;
