@@ -5,89 +5,57 @@
   <title>Minh Nguyen | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
-
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
 
 <!-- ================= NAV ================= -->
 <nav>
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#" id="aboutBtn">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><button id="themeToggle">🌙</button></li>
-  </ul>
+  <div class="nav-container">
+    <div class="logo">Minh Nguyen | Portfolio</div>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#" id="aboutBtn">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><button id="themeToggle">🌙</button></li>
+    </ul>
+  </div>
 </nav>
 
-<!-- ================= HOME ================= -->
-<section id="home" class="fade">
-  <h1>Hi, I'm Minh</h1>
-  <p>Data Analyst / Data Engineer Portfolio</p>
-  <button id="readMore">Read more</button>
-</section>
+<!-- ================= HERO ================= -->
+<section id="home" class="hero">
+  <div class="hero-content fade">
 
-<!-- ================= PROJECTS ================= -->
-<section id="projects" class="fade">
-  <h2>Projects</h2>
+    <img src="https://i.pravatar.cc/200" alt="Avatar" class="avatar" />
 
-  <div class="card">
-    <h3>Sales Dashboard</h3>
-    <p>Power BI dashboard analyzing sales performance.</p>
-  </div>
+    <h1>Hi, I'm Minh Nguyen</h1>
 
-  <div class="card">
-    <h3>ETL Pipeline</h3>
-    <p>ETL using SQL Server & AWS.</p>
-  </div>
-</section>
-
-<!-- ================= CONTACT ================= -->
-<section id="contact" class="fade">
-  <h2>Contact</h2>
-
-  <div class="icons">
-    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="mailto:minh@email.com"><i class="fas fa-envelope"></i></a>
-  </div>
-</section>
-
-<footer>
-  © 2026 Minh Nguyen
-</footer>
-
-<!-- ================= ABOUT PANEL ================= -->
-<div class="about-panel" id="aboutPanel">
-  <div class="close" id="closeAbout">✕</div>
-
-  <div class="about-content fade">
-    <h2>About Me</h2>
-    <p>
-      I am transitioning into Data Analytics & Data Engineering,
-      passionate about turning data into insights.
+    <p class="subtitle">
+      Data Analyst | Data Engineer | BI Enthusiast
     </p>
 
-    <h2>Education & Career</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <span>2024 – Now</span>
-        <p>Data Analyst / BI learner</p>
-      </div>
-      <div class="timeline-item">
-        <span>2020 – 2023</span>
-        <p>English Studies</p>
-      </div>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn primary">Get in Touch</a>
+      <a href="#projects" class="btn secondary">View Projects</a>
     </div>
-  </div>
-</div>
 
-<!-- JS -->
+  </div>
+</section>
+
+<!-- ================= PLACEHOLDERS ================= -->
+<section id="projects">
+  <h2>Projects</h2>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+</section>
+
 <script src="script.js"></script>
 </body>
 </html>
