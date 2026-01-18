@@ -1,0 +1,66 @@
+/* ======================
+   FADE-IN ON SCROLL
+====================== */
+const faders = document.querySelectorAll(".fade");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.2 });
+
+faders.forEach(el => observer.observe(el));
+
+/* ======================
+   ABOUT PANEL
+====================== */
+const aboutPanel = document.getElementById("aboutPanel");
+const aboutBtn = document.getElementById("aboutBtn");
+const readMore = document.getElementById("readMore");
+const closeAbout = document.getElementById("closeAbout");
+
+if (aboutBtn) {
+  aboutBtn.onclick = (e) => {
+    e.preventDefault();
+    aboutPanel.classList.add("open");
+  };
+}
+
+if (readMore) {
+  readMore.onclick = () => {
+    aboutPanel.classList.add("open");
+  };
+}
+
+if (closeAbout) {
+  closeAbout.onclick = () => {
+    aboutPanel.classList.remove("open");
+  };
+}
+
+/* ======================
+   DARK / LIGHT MODE
+====================== */
+const toggle = document.getElementById("themeToggle");
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "dark") {
+  document.body.classList.add("dark");
+  toggle.textContent = "☀️";
+}
+
+if (toggle) {
+  toggle.onclick = () => {
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+      toggle.textContent = "☀️";
+    } else {
+      localStorage.setItem("theme", "light");
+      toggle.textContent = "🌙";
+    }
+  };
+}
