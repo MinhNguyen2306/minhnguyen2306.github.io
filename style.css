@@ -39,6 +39,23 @@ nav {
   z-index: 1000;
 }
 
+nav {
+  background: rgba(255,255,255,0.8);
+}
+
+body.dark nav {
+  background: rgba(0,0,0,0.75);
+}
+
+nav a {
+  color: #374151;
+}
+
+body.dark nav a {
+  color: #9ca3af;
+}
+
+
 .nav-container {
   max-width: 1200px;
   margin: auto;
