@@ -5,12 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Minh Nguyen | Data Portfolio</title>
 
+<!-- ICON -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 /* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
   scroll-behavior: smooth;
 }
 
@@ -49,11 +55,11 @@ nav a:hover {
   color: #2563eb;
 }
 
-/* ===== SECTION ===== */
+/* ===== SECTIONS ===== */
 section {
   max-width: 1000px;
   margin: auto;
-  padding: 120px 20px;
+  padding: 140px 20px;
 }
 
 section:not(:first-child) {
@@ -62,17 +68,17 @@ section:not(:first-child) {
 
 /* ===== HERO ===== */
 #home {
-  padding-top: 170px;
+  padding-top: 180px;
 }
 
 #home h1 {
   font-size: 42px;
-  margin-bottom: 10px;
 }
 
 #home p {
   font-size: 18px;
   color: #4b5563;
+  margin-top: 8px;
 }
 
 /* ===== HEADINGS ===== */
@@ -120,8 +126,29 @@ h2 {
   margin-bottom: 20px;
 }
 
-.project h3 {
-  margin-bottom: 8px;
+/* ===== CONTACT ICONS ===== */
+.social-links {
+  display: flex;
+  gap: 16px;
+  margin-top: 25px;
+}
+
+.social-links a {
+  width: 46px;
+  height: 46px;
+  background: #4b5563;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 18px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+  background: #2563eb;
+  transform: translateY(-4px);
 }
 
 /* ===== FOOTER ===== */
@@ -132,30 +159,37 @@ footer {
   color: #6b7280;
 }
 
+/* ===== FADE IN ON SCROLL ===== */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ===== ABOUT SLIDE PAGE ===== */
 .about-page {
   position: fixed;
   inset: 0;
   background: #f9fafb;
   z-index: 3000;
-  transform: translateY(100%);
+  transform: translateX(100%);
   transition: transform 0.6s ease;
   overflow-y: auto;
 }
 
 .about-page.open {
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
 .about-content {
   max-width: 800px;
   margin: auto;
   padding: 120px 20px;
-}
-
-.about-content h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
 }
 
 .back-btn {
@@ -187,7 +221,7 @@ footer {
 
 <body>
 
-<!-- ===== NAVBAR ===== -->
+<!-- NAV -->
 <nav>
   <ul>
     <li><a href="#home">Home</a></li>
@@ -198,84 +232,92 @@ footer {
   </ul>
 </nav>
 
-<!-- ===== HOME ===== -->
+<!-- HOME -->
 <section id="home">
-  <h1>Minh Nguyen</h1>
-  <p>Aspiring Data Analyst / Data Engineer</p>
+  <div class="fade">
+    <h1>Minh Nguyen</h1>
+    <p>Aspiring Data Analyst / Data Engineer</p>
+  </div>
 </section>
 
-<!-- ===== ABOUT PREVIEW ===== -->
+<!-- ABOUT -->
 <section id="about">
-  <h2>About Me</h2>
-  <p>
-    I am transitioning into Data Analytics and Data Engineering, with a background
-    in English Studies that helps me communicate data insights clearly.
-  </p>
-
-  <button class="primary-btn" onclick="openAboutPage()">
-    Read more
-  </button>
+  <div class="fade">
+    <h2>About Me</h2>
+    <p>
+      I am transitioning into Data Analytics and Data Engineering with a strong communication background.
+    </p>
+    <button class="primary-btn" onclick="openAboutPage()">Read more</button>
+  </div>
 </section>
 
-<!-- ===== SKILLS ===== -->
+<!-- SKILLS -->
 <section id="skills">
-  <h2>Skills</h2>
-  <div class="skills">
-    <div class="skill">SQL</div>
-    <div class="skill">Python</div>
-    <div class="skill">Power BI / Tableau</div>
-    <div class="skill">ETL & Data Pipelines</div>
-    <div class="skill">AWS</div>
-    <div class="skill">SQL Server</div>
+  <div class="fade">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill">SQL</div>
+      <div class="skill">Python</div>
+      <div class="skill">Power BI / Tableau</div>
+      <div class="skill">ETL & Data Pipelines</div>
+      <div class="skill">AWS</div>
+      <div class="skill">SQL Server</div>
+    </div>
   </div>
 </section>
 
-<!-- ===== PROJECTS ===== -->
+<!-- PROJECTS -->
 <section id="projects">
-  <h2>Projects</h2>
+  <div class="fade">
+    <h2>Projects</h2>
 
-  <div class="project">
-    <h3>Sales Data Analysis</h3>
-    <p>SQL-based analysis to identify trends and insights.</p>
-  </div>
+    <div class="project">
+      <h3>Sales Data Analysis</h3>
+      <p>SQL analysis to uncover trends and insights.</p>
+    </div>
 
-  <div class="project">
-    <h3>Web Scraping Job Data</h3>
-    <p>Python & Selenium pipeline to collect job postings.</p>
+    <div class="project">
+      <h3>Web Scraping Job Data</h3>
+      <p>Python & Selenium pipeline for job postings.</p>
+    </div>
   </div>
 </section>
 
-<!-- ===== CONTACT ===== -->
+<!-- CONTACT -->
 <section id="contact">
-  <h2>Contact</h2>
-  <p>Email: your-email@gmail.com</p>
-  <p>GitHub: https://github.com/minhnguyen2306</p>
+  <div class="fade">
+    <h2>Contact</h2>
+    <p>Feel free to connect with me.</p>
+
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/your-linkedin" target="_blank">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://github.com/minhnguyen2306" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:your-email@gmail.com">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </div>
+  </div>
 </section>
 
 <footer>
   © 2026 Minh Nguyen
 </footer>
 
-<!-- ===== ABOUT FULL PAGE ===== -->
+<!-- ABOUT FULL PAGE -->
 <div id="aboutPage" class="about-page">
-  <div class="about-content">
-
+  <div class="about-content fade">
     <button class="back-btn" onclick="closeAboutPage()">← Back</button>
 
     <h1>About Me</h1>
-
     <p>
-      I am an English Studies graduate transitioning into Data Analytics and Data Engineering.
-      My strength lies in combining analytical thinking with clear communication.
+      English Studies graduate transitioning into Data Analytics & Data Engineering.
     </p>
 
-    <p>
-      I work with SQL, Python, ETL pipelines, cloud platforms, and BI tools to transform raw data
-      into meaningful insights that support decision-making.
-    </p>
-
-    <h2>Education & Career Timeline</h2>
-
+    <h2>Timeline</h2>
     <div class="timeline">
       <div class="event">
         <span>2022</span>
@@ -287,22 +329,35 @@ footer {
       </div>
       <div class="event">
         <span>2025</span>
-        <p>ETL pipelines, AWS, BI dashboards projects</p>
+        <p>ETL, AWS, BI dashboard projects</p>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- ===== SCRIPT ===== -->
+<!-- SCRIPT -->
 <script>
+/* SLIDE ABOUT */
 function openAboutPage() {
   document.getElementById("aboutPage").classList.add("open");
+  document.body.style.overflow = "hidden";
 }
 
 function closeAboutPage() {
   document.getElementById("aboutPage").classList.remove("open");
+  document.body.style.overflow = "auto";
 }
+
+/* FADE ON SCROLL */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll(".fade").forEach(el => observer.observe(el));
 </script>
 
 </body>
