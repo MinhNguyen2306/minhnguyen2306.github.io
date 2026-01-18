@@ -1,26 +1,18 @@
-/* ======================
-   GLOBAL VARIABLES
-====================== */
 :root {
   --primary: #2563eb;
   --accent: #22c55e;
 
-  /* Light */
   --bg: #f8fafc;
   --card: #ffffff;
   --text: #1f2937;
   --muted: #6b7280;
 
-  /* Dark (Black theme) */
   --bg-dark: #000000;
   --card-dark: #0a0a0a;
   --text-dark: #e5e7eb;
   --muted-dark: #9ca3af;
 }
 
-/* ======================
-   RESET
-====================== */
 * {
   margin: 0;
   padding: 0;
@@ -34,7 +26,7 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.7;
-  transition: background 0.4s ease, color 0.4s ease;
+  transition: background 0.4s, color 0.4s;
 }
 
 body.dark {
@@ -42,13 +34,11 @@ body.dark {
   color: var(--text-dark);
 }
 
-/* ======================
-   NAVBAR
-====================== */
+/* ================= NAV ================= */
 nav {
   position: fixed;
-  top: 0;
   width: 100%;
+  top: 0;
   background: rgba(255,255,255,0.85);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid #e5e7eb;
@@ -73,24 +63,13 @@ nav a {
   text-decoration: none;
   font-weight: 600;
   color: inherit;
-  transition: color 0.3s ease;
 }
 
 nav a:hover {
   color: var(--primary);
 }
 
-nav button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  color: inherit;
-}
-
-/* ======================
-   SECTIONS
-====================== */
+/* ================= SECTIONS ================= */
 section {
   max-width: 1000px;
   margin: auto;
@@ -98,8 +77,6 @@ section {
 }
 
 section p {
-  max-width: 720px;
-  font-size: 17px;
   color: var(--muted);
 }
 
@@ -107,69 +84,49 @@ body.dark section p {
   color: var(--muted-dark);
 }
 
-/* ======================
-   HEADINGS
-====================== */
-h1 {
-  font-size: 46px;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
+/* ================= HEADINGS ================= */
+h1 { font-size: 46px; }
+h2 { font-size: 30px; margin-bottom: 20px; }
 
-h2 {
-  font-size: 30px;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-
-/* ======================
-   BUTTONS
-====================== */
+/* ================= BUTTON ================= */
 button {
   padding: 12px 26px;
   border-radius: 8px;
   border: none;
   background: var(--primary);
-  color: white;
+  color: #fff;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(37,99,235,0.35);
 }
 
-/* ======================
-   CARDS
-====================== */
+/* ================= CARD ================= */
 .card {
   background: var(--card);
   border-radius: 16px;
   padding: 26px;
   margin-bottom: 24px;
   border: 1px solid #e5e7eb;
-  transition: all 0.35s ease;
+  transition: 0.3s;
 }
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
 body.dark .card {
   background: var(--card-dark);
-  border: 1px solid #1f2937;
+  border-color: #1f2937;
 }
 
-/* ======================
-   FADE IN ON SCROLL
-====================== */
+/* ================= FADE ================= */
 .fade {
   opacity: 0;
   transform: translateY(50px);
-  transition: all 0.9s ease;
+  transition: 0.9s ease;
 }
 
 .fade.show {
@@ -177,9 +134,7 @@ body.dark .card {
   transform: translateY(0);
 }
 
-/* ======================
-   ABOUT SLIDE PANEL
-====================== */
+/* ================= ABOUT PANEL ================= */
 .about-panel {
   position: fixed;
   top: 0;
@@ -187,9 +142,9 @@ body.dark .card {
   width: 100%;
   height: 100%;
   background: inherit;
-  transition: right 0.6s ease;
-  z-index: 2000;
+  transition: 0.6s;
   overflow-y: auto;
+  z-index: 2000;
 }
 
 .about-panel.open {
@@ -202,88 +157,44 @@ body.dark .card {
   padding: 140px 20px;
 }
 
-.about-content h2 {
-  border-left: 4px solid var(--primary);
-  padding-left: 14px;
-}
-
-/* Close */
 .close {
   position: fixed;
   top: 20px;
   right: 30px;
-  font-size: 26px;
+  font-size: 28px;
   cursor: pointer;
 }
 
-/* ======================
-   TIMELINE
-====================== */
+/* ================= TIMELINE ================= */
 .timeline {
   border-left: 3px solid var(--primary);
   padding-left: 30px;
-  margin-top: 30px;
 }
 
 .timeline-item {
-  position: relative;
-  margin-bottom: 32px;
-}
-
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  left: -38px;
-  top: 6px;
-  width: 14px;
-  height: 14px;
-  background: var(--primary);
-  border-radius: 50%;
+  margin-bottom: 30px;
 }
 
 .timeline-item span {
-  font-weight: 600;
+  font-weight: bold;
   color: var(--primary);
 }
 
-/* ======================
-   CONTACT ICONS
-====================== */
-.icons {
-  margin-top: 24px;
-}
-
+/* ================= CONTACT ================= */
 .icons a {
   font-size: 28px;
   margin-right: 24px;
   color: var(--muted);
-  transition: all 0.3s ease;
 }
 
 .icons a:hover {
   color: var(--primary);
-  transform: scale(1.25);
+  transform: scale(1.2);
 }
 
-/* ======================
-   FOOTER
-====================== */
+/* ================= FOOTER ================= */
 footer {
   text-align: center;
   padding: 50px;
-  font-size: 14px;
   color: var(--muted);
-}
-
-body.dark footer {
-  color: var(--muted-dark);
-}
-
-/* ======================
-   RESPONSIVE
-====================== */
-@media (max-width: 768px) {
-  h1 { font-size: 36px; }
-  h2 { font-size: 26px; }
-  nav ul { gap: 16px; }
 }
