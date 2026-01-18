@@ -3,20 +3,22 @@
 ====================== */
 const faders = document.querySelectorAll(".fade");
 
-const appearOnScroll = new IntersectionObserver(
+const observer = new IntersectionObserver(
   (entries) => {
-    entries.forEach((entry) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("show");
-        appearOnScroll.unobserve(entry.target);
+      } else {
+        entry.target.classList.remove("show");
       }
     });
   },
-  { threshold: 0.15 }
+  {
+    threshold: 0.25
+  }
 );
 
-faders.forEach((fade) => appearOnScroll.observe(fade));
-
+faders.forEach(el => observer.observe(el));
 
 /* ======================
    DARK / LIGHT MODE
