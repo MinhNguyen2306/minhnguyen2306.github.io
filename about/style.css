@@ -22,79 +22,83 @@ body.dark .highlight-box {
   background: rgba(255,255,255,0.06);
 }
 /* ================= TIMELINE ================= */
-.about-timeline ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.about-timeline li {
-  margin-bottom: 16px;
-  color: #374151;
-}
-
-body.dark .about-timeline li {
-  color: #d1d5db;
-}
-
-@media (max-width: 768px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
-  
-.timeline {
-  max-width: 800px;
-  margin: 80px auto 120px;
-  padding: 0 20px;
-}
-
-.timeline h2 {
-  font-size: 2rem;
-  margin-bottom: 40px;
+.horizontal-timeline {
+  padding: 120px 20px;
   text-align: center;
+}
+
+.horizontal-timeline h2 {
+  font-size: 2.4rem;
+  margin-bottom: 80px;
+}
+
+.timeline-track {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.timeline-track::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #111;
+  transform: translateY(-50%);
 }
 
 .timeline-item {
   position: relative;
-  padding-left: 30px;
-  margin-bottom: 40px;
-  border-left: 3px solid #ddd;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  left: -9px;
-  top: 5px;
-  width: 16px;
-  height: 16px;
-  background: #111;
-  border-radius: 50%;
+.timeline-item.top {
+  flex-direction: column-reverse;
 }
 
-.timeline-item .time {
-  font-size: 0.85rem;
-  color: #888;
+.timeline-item.bottom {
+  flex-direction: column;
+}
+
+.timeline-item .content {
+  max-width: 180px;
+  margin-bottom: 20px;
+}
+
+.timeline-item.bottom .content {
+  margin-top: 20px;
 }
 
 .timeline-item h3 {
-  margin: 8px 0 10px;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
 }
 
 .timeline-item p {
+  font-size: 0.9rem;
   color: #555;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
-/* Animation */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
+/* DOT */
+.dot {
+  width: 80px;
+  height: 80px;
+  background: #111;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  z-index: 2;
+  box-shadow: 0 0 0 6px #ff4d4d;
 }
-
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
