@@ -44,8 +44,6 @@ toggleBtn?.addEventListener("click", () => {
 /* ======================
    ABOUT SLIDE PANEL
 ====================== */
-const aboutBtn = document.getElementById("aboutBtn");
-const aboutPanel = document.getElementById("aboutPanel");
 const closeAbout = document.getElementById("closeAbout");
 const readMore = document.getElementById("readMore");
 
