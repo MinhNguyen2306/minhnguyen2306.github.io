@@ -1,15 +1,18 @@
-console.log("About page JS loaded");
+const toggle = document.getElementById("themeToggle");
+const body = document.body;
 
-<script>
-  const faders = document.querySelectorAll('.fade-in');
+// Load saved theme
+if (localStorage.getItem("theme") === "dark") {
+  body.classList.add("dark");
+  toggle.textContent = "☀️";
+}
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-      }
-    });
-  }, { threshold: 0.3 });
+// Toggle theme
+toggle.addEventListener("click", () => {
+  body.classList.toggle("dark");
 
-  faders.forEach(el => observer.observe(el));
-</script>
+  const isDark = body.classList.contains("dark");
+  toggle.textContent = isDark ? "☀️" : "🌙";
+
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+});
