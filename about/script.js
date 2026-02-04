@@ -1,3 +1,5 @@
+console.log("About page JS loaded");
+
 <script>
   const faders = document.querySelectorAll('.fade-in');
 
