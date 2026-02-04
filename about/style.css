@@ -101,27 +101,31 @@ nav a:hover {
 }
 
 /* ================= TIMELINE ================= */
-.horizontal-timeline {
+/* ================= JOURNEY ================= */
+
+.journey {
   padding: 4rem 1.5rem 6rem;
-  overflow-x: auto;
 }
 
-.horizontal-timeline h2 {
+.journey h2 {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 4rem;
+  color: var(--text-main);
 }
 
-.timeline-track {
+/* track */
+.journey-track {
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-width: 900px;
+  max-width: 900px;
+  margin: auto;
 }
 
 /* center line */
-.timeline-track::before {
+.journey-track::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -132,21 +136,23 @@ nav a:hover {
   transform: translateY(-50%);
 }
 
-.timeline-item {
-  width: 180px;
+/* item */
+.journey-item {
+  width: 200px;
   text-align: center;
   position: relative;
 }
 
-.timeline-item.top {
+.journey-item.top {
   transform: translateY(-120px);
 }
 
-.timeline-item.bottom {
+.journey-item.bottom {
   transform: translateY(120px);
 }
 
-.timeline-item .content {
+/* card */
+.journey-card {
   background: var(--bg);
   border: 1px solid var(--border);
   padding: 1rem;
@@ -154,20 +160,21 @@ nav a:hover {
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
-.timeline-item h3 {
+.journey-card h3 {
   color: var(--accent);
   margin-bottom: .5rem;
 }
 
-.timeline-item p {
+.journey-card p {
   color: var(--text-muted);
   font-size: .9rem;
+  line-height: 1.5;
 }
 
 /* dot */
-.dot {
-  width: 70px;
-  height: 70px;
+.journey-dot {
+  width: 64px;
+  height: 64px;
   margin: 1rem auto;
   border-radius: 50%;
   border: 3px solid var(--accent);
@@ -176,6 +183,20 @@ nav a:hover {
   align-items: center;
   justify-content: center;
   font-weight: 700;
+  color: var(--text-main);
+}
+
+/* ================= ANIMATION ================= */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ================= ANIMATION ================= */
