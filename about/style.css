@@ -259,3 +259,135 @@ body {
   position: relative;
 }
 
+/* ===== CSS VARIABLES ===== */
+:root {
+  --bg: #ffffff;
+  --nav-bg: #ffffff;
+  --border: #e5e7eb;
+
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --accent: #2563eb;
+}
+
+/* ===== DARK MODE ===== */
+body.dark {
+  --bg: #020617;
+  --nav-bg: #020617;
+  --border: #1e293b;
+
+  --text-main: #e5e7eb;
+  --text-muted: #94a3b8;
+  --accent: #38bdf8;
+}
+
+/* ===== GLOBAL ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text-main);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ===== NAV ===== */
+nav {
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 1rem 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.theme-btn {
+  border: none;
+  background: transparent;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* ===== ABOUT ===== */
+.about-intro {
+  max-width: 900px;
+  margin: 5rem auto 4rem;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.about-intro h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.intro-text {
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0.8rem auto;
+  line-height: 1.7;
+}
+
+/* ===== TIMELINE ===== */
+.timeline {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+}
+
+.timeline h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.timeline-list {
+  list-style: none;
+  border-left: 2px solid var(--border);
+  padding-left: 1.5rem;
+}
+
+.timeline-list li {
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+}
+
+.timeline-list span {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-right: 0.5rem;
+}
+
