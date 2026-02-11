@@ -1,367 +1,14 @@
-/* ================= ROOT ================= */
-
-:root {
-  --bg: #ffffff;
-  --text: #111111;
-  --muted: #666;
-  --card-bg: rgba(255, 255, 255, 0.7);
-  --line: #e5e5e5;
-  --accent: linear-gradient(180deg, #000, #666);
-}
-
-body.dark {
-  --bg: #0d0d0d;
-  --text: #ffffff;
-  --muted: #aaa;
-  --card-bg: rgba(25, 25, 25, 0.7);
-  --line: #2a2a2a;
-  --accent: linear-gradient(180deg, #fff, #666);
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  transition: 0.4s ease;
-}
-
-/* ================= JOURNEY SECTION ================= */
-
-.journey-section {
-  padding: 120px 10%;
-}
-
-.journey-section h2 {
-  text-align: center;
-  font-size: 36px;
-  margin-bottom: 80px;
-}
-
-/* ================= TIMELINE ================= */
-
-.timeline {
-  position: relative;
-  max-width: 1100px;
-  margin: auto;
-}
-
-/* Base line */
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  width: 2px;
-  height: 100%;
-  background: var(--line);
-  transform: translateX(-50%);
-}
-
-/* Progress line */
-.timeline-progress {
-  position: absolute;
-  left: 50%;
-  width: 3px;
-  height: 0;
-  background: var(--accent);
-  transform: translateX(-50%);
-  transition: height 0.2s ease-out;
-}
-
-/* ================= ITEMS ================= */
-
-.timeline-item {
-  width: 50%;
-  padding: 50px;
-  position: relative;
-}
-
-.timeline-item.left {
-  left: 0;
-  text-align: right;
-}
-
-.timeline-item.right {
-  left: 50%;
-}
-
-/* ================= CARD ================= */
-
-.timeline-content {
-  backdrop-filter: blur(12px);
-  background: var(--card-bg);
-  padding: 30px;
-  border-radius: 16px;
-  border: 1px solid var(--line);
-  transition: all 0.4s ease;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-}
-
-body.dark .timeline-content {
-  box-shadow: 0 8px 30px rgba(255,255,255,0.05);
-}
-
-.timeline-content:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-}
-
-body.dark .timeline-content:hover {
-  box-shadow: 0 15px 40px rgba(255,255,255,0.08);
-}
-
-.timeline-content h3 {
-  margin-bottom: 10px;
-  font-size: 20px;
-}
-
-.timeline-content p {
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-/* ================= ICON ================= */
-
-.timeline-icon {
-  position: absolute;
-  top: 60px;
-  left: 100%;
-  transform: translateX(-50%);
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 2px solid var(--text);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  z-index: 10;
-  animation: pulse 2s infinite;
-}
-
-.timeline-item.right .timeline-icon {
-  left: 0;
-}
-
-/* Pulse animation */
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(0,0,0,0.3);
-  }
-  70% {
-    box-shadow: 0 0 0 12px rgba(0,0,0,0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(0,0,0,0);
-  }
-}
-
-body.dark .timeline-icon {
-  animation: pulseDark 2s infinite;
-}
-
-@keyframes pulseDark {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255,255,255,0.4);
-  }
-  70% {
-    box-shadow: 0 0 0 12px rgba(255,255,255,0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(255,255,255,0);
-  }
-}
-
-/* ================= ANIMATION ================= */
-
-.fade-in {
-  opacity: 0;
-  transition: all 0.8s ease;
-}
-
-.timeline-item.left.fade-in {
-  transform: translateX(-60px);
-}
-
-.timeline-item.right.fade-in {
-  transform: translateX(60px);
-}
-
-.fade-in.show {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* ================= MOBILE ================= */
-
-@media (max-width: 768px) {
-
-  .timeline::before,
-  .timeline-progress {
-    left: 25px;
-  }
-
-  .timeline-item {
-    width: 100%;
-    padding-left: 80px;
-    padding-right: 20px;
-  }
-
-  .timeline-item.left,
-  .timeline-item.right {
-    left: 0;
-    text-align: left;
-  }
-
-  .timeline-icon {
-    left: 25px !important;
-  }
-}
-/* ================= HORIZONTAL TIMELINE ================= */
-
-.journey-horizontal {
-  padding: 120px 8%;
-  text-align: center;
-}
-
-.journey-horizontal h2 {
-  font-size: 34px;
-  margin-bottom: 80px;
-}
-
-.timeline-wrapper {
-  position: relative;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.timeline-horizontal {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-}
-
-/* Base line */
-.timeline-line {
-  position: absolute;
-  top: 35px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--border);
-  z-index: 0;
-}
-
-/* Progress line */
-.timeline-progress {
-  position: absolute;
-  top: 35px;
-  left: 0;
-  width: 0%;
-  height: 3px;
-  background: var(--accent);
-  z-index: 1;
-  transition: width 0.2s ease-out;
-}
-
-/* ITEM */
-.timeline-item {
-  position: relative;
-  width: 22%;
-  z-index: 2;
-  text-align: center;
-}
-
-/* ICON */
-.timeline-icon {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 25px;
-  border-radius: 50%;
-  border: 2px solid var(--text-main);
-  background: var(--bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  transition: all 0.3s ease;
-}
-
-.timeline-item:hover .timeline-icon {
-  transform: scale(1.15);
-  border-color: var(--accent);
-}
-
-/* CARD */
-.timeline-card {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  padding: 20px;
-  border-radius: 14px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-  transition: all 0.4s ease;
-}
-
-.timeline-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-}
-
-.timeline-card h3 {
-  margin-bottom: 8px;
-  color: var(--accent);
-}
-
-.timeline-card p {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-}
-
-/* FADE ANIMATION */
-.fade-in {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* MOBILE */
-@media (max-width: 900px) {
-  .timeline-horizontal {
-    flex-direction: column;
-    gap: 60px;
-  }
-
-  .timeline-line,
-  .timeline-progress {
-    display: none;
-  }
-
-  .timeline-item {
-    width: 100%;
-  }
-}
-/* ================= PRO TIMELINE ================= */
+/* ================= JOURNEY PRO ================= */
 
 .journey-pro {
-  padding: 140px 8%;
+  padding: 6rem 1.5rem;
   position: relative;
 }
 
 .journey-pro h2 {
   text-align: center;
-  font-size: 36px;
-  margin-bottom: 100px;
+  font-size: 2.2rem;
+  margin-bottom: 4rem;
 }
 
 /* TIMELINE WRAPPER */
@@ -369,27 +16,29 @@ body.dark .timeline-icon {
   position: relative;
   max-width: 900px;
   margin: auto;
-  padding-left: 40px;
+  padding: 2rem 0;
 }
 
-/* Vertical Base Line */
+/* Vertical center line */
 .timeline::before {
   content: "";
   position: absolute;
-  left: 6px;
+  left: 50%;
   top: 0;
-  width: 2px;
+  transform: translateX(-50%);
+  width: 3px;
   height: 100%;
   background: var(--border);
 }
 
-/* Animated Progress Line */
+/* Progress line */
 .timeline-progress {
   position: absolute;
-  left: 6px;
+  left: 50%;
   top: 0;
-  width: 2px;
-  height: 0%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 0;
   background: var(--text-main);
   transition: height 0.2s ease;
   z-index: 2;
@@ -398,83 +47,110 @@ body.dark .timeline-icon {
 /* ITEM */
 .timeline-item {
   position: relative;
-  margin-bottom: 100px;
+  width: 50%;
+  padding: 2rem 2.5rem;
   opacity: 0;
-  transform: translateX(40px);
-  transition: all 0.8s ease;
+  transform: translateY(40px);
+  transition: all 0.6s ease;
 }
 
-/* Active state */
 .timeline-item.show {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
-/* DOT */
+/* Left side */
+.timeline-item:nth-child(odd) {
+  left: 0;
+  text-align: right;
+}
+
+/* Right side */
+.timeline-item:nth-child(even) {
+  left: 50%;
+  text-align: left;
+}
+
+/* Dot */
 .timeline-dot {
   position: absolute;
-  left: -34px;
-  width: 14px;
-  height: 14px;
+  top: 32px;
+  width: 18px;
+  height: 18px;
   background: var(--bg);
-  border: 2px solid var(--text-main);
+  border: 3px solid var(--text-main);
   border-radius: 50%;
-  transition: all 0.3s ease;
   z-index: 3;
 }
 
-/* Dot active glow */
-.timeline-item.show .timeline-dot {
-  background: var(--text-main);
-  box-shadow: 0 0 15px var(--text-main);
+/* Dot positioning */
+.timeline-item:nth-child(odd) .timeline-dot {
+  right: -9px;
 }
 
-/* CARD */
+.timeline-item:nth-child(even) .timeline-dot {
+  left: -9px;
+}
+
+/* Card */
 .timeline-content {
   background: var(--bg);
+  padding: 1.5rem;
+  border-radius: 14px;
   border: 1px solid var(--border);
-  padding: 30px;
-  border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   transition: all 0.3s ease;
 }
 
 .timeline-content:hover {
   transform: translateY(-6px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
 }
 
-/* YEAR STYLE */
+/* Year */
 .timeline-year {
-  display: inline-block;
-  font-size: 13px;
+  font-size: 0.9rem;
   font-weight: 600;
-  padding: 4px 10px;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  margin-bottom: 10px;
   color: var(--text-muted);
+  display: block;
+  margin-bottom: 0.4rem;
 }
 
-/* TEXT */
+/* Heading */
 .timeline-content h3 {
-  margin-bottom: 10px;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
 }
 
 .timeline-content p {
+  font-size: 0.9rem;
   color: var(--text-muted);
-  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
+
 @media (max-width: 768px) {
-  .timeline {
-    padding-left: 30px;
+
+  .timeline::before,
+  .timeline-progress {
+    left: 8px;
   }
 
-  .timeline-content {
-    padding: 20px;
+  .timeline-item {
+    width: 100%;
+    padding-left: 2.5rem;
+    padding-right: 1rem;
+    text-align: left !important;
+  }
+
+  .timeline-item:nth-child(even),
+  .timeline-item:nth-child(odd) {
+    left: 0;
+  }
+
+  .timeline-dot {
+    left: 0 !important;
+    right: auto;
   }
 }
-
-
