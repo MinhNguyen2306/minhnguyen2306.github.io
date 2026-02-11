@@ -223,3 +223,132 @@ body.dark .timeline-icon {
     left: 25px !important;
   }
 }
+/* ================= HORIZONTAL TIMELINE ================= */
+
+.journey-horizontal {
+  padding: 120px 8%;
+  text-align: center;
+}
+
+.journey-horizontal h2 {
+  font-size: 34px;
+  margin-bottom: 80px;
+}
+
+.timeline-wrapper {
+  position: relative;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.timeline-horizontal {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* Base line */
+.timeline-line {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--border);
+  z-index: 0;
+}
+
+/* Progress line */
+.timeline-progress {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--accent);
+  z-index: 1;
+  transition: width 0.2s ease-out;
+}
+
+/* ITEM */
+.timeline-item {
+  position: relative;
+  width: 22%;
+  z-index: 2;
+  text-align: center;
+}
+
+/* ICON */
+.timeline-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 25px;
+  border-radius: 50%;
+  border: 2px solid var(--text-main);
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-icon {
+  transform: scale(1.15);
+  border-color: var(--accent);
+}
+
+/* CARD */
+.timeline-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+  transition: all 0.4s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.timeline-card h3 {
+  margin-bottom: 8px;
+  color: var(--accent);
+}
+
+.timeline-card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* FADE ANIMATION */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .timeline-horizontal {
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .timeline-line,
+  .timeline-progress {
+    display: none;
+  }
+
+  .timeline-item {
+    width: 100%;
+  }
+}
+
