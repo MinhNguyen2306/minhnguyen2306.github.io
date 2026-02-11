@@ -42,3 +42,30 @@ window.addEventListener("scroll", () => {
 
   progress.style.width = percent + "%";
 });
+/* ================= TIMELINE ANIMATION ================= */
+
+const items = document.querySelectorAll(".timeline-item");
+const progress = document.querySelector(".timeline-progress");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.3 });
+
+items.forEach(item => observer.observe(item));
+
+/* Progress line scroll effect */
+window.addEventListener("scroll", () => {
+  const timeline = document.querySelector(".timeline");
+  const rect = timeline.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  const totalHeight = timeline.offsetHeight;
+  const visible = windowHeight - rect.top;
+  const progressHeight = Math.min(totalHeight, Math.max(0, visible));
+
+  progress.style.height = progressHeight + "px";
+});
