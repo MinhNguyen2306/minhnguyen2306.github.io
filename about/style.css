@@ -351,4 +351,130 @@ body.dark .timeline-icon {
     width: 100%;
   }
 }
+/* ================= PRO TIMELINE ================= */
+
+.journey-pro {
+  padding: 140px 8%;
+  position: relative;
+}
+
+.journey-pro h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 100px;
+}
+
+/* TIMELINE WRAPPER */
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: auto;
+  padding-left: 40px;
+}
+
+/* Vertical Base Line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--border);
+}
+
+/* Animated Progress Line */
+.timeline-progress {
+  position: absolute;
+  left: 6px;
+  top: 0;
+  width: 2px;
+  height: 0%;
+  background: var(--text-main);
+  transition: height 0.2s ease;
+  z-index: 2;
+}
+
+/* ITEM */
+.timeline-item {
+  position: relative;
+  margin-bottom: 100px;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: all 0.8s ease;
+}
+
+/* Active state */
+.timeline-item.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* DOT */
+.timeline-dot {
+  position: absolute;
+  left: -34px;
+  width: 14px;
+  height: 14px;
+  background: var(--bg);
+  border: 2px solid var(--text-main);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+
+/* Dot active glow */
+.timeline-item.show .timeline-dot {
+  background: var(--text-main);
+  box-shadow: 0 0 15px var(--text-main);
+}
+
+/* CARD */
+.timeline-content {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+/* YEAR STYLE */
+.timeline-year {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  margin-bottom: 10px;
+  color: var(--text-muted);
+}
+
+/* TEXT */
+.timeline-content h3 {
+  margin-bottom: 10px;
+}
+
+.timeline-content p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .timeline {
+    padding-left: 30px;
+  }
+
+  .timeline-content {
+    padding: 20px;
+  }
+}
+
 
