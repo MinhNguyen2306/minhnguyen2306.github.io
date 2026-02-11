@@ -3,17 +3,19 @@
 :root {
   --bg: #ffffff;
   --text: #111111;
-  --secondary: #666;
+  --muted: #666;
+  --card-bg: rgba(255, 255, 255, 0.7);
   --line: #e5e5e5;
-  --card-bg: #ffffff;
+  --accent: linear-gradient(180deg, #000, #666);
 }
 
 body.dark {
-  --bg: #0f0f0f;
+  --bg: #0d0d0d;
   --text: #ffffff;
-  --secondary: #aaa;
-  --line: #333;
-  --card-bg: #1a1a1a;
+  --muted: #aaa;
+  --card-bg: rgba(25, 25, 25, 0.7);
+  --line: #2a2a2a;
+  --accent: linear-gradient(180deg, #fff, #666);
 }
 
 * {
@@ -26,79 +28,30 @@ body.dark {
 body {
   background: var(--bg);
   color: var(--text);
-  transition: 0.3s ease;
+  transition: 0.4s ease;
 }
 
-/* ================= NAV ================= */
-
-nav {
-  padding: 20px 10%;
-  border-bottom: 1px solid var(--line);
-}
-
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-nav ul {
-  display: flex;
-  list-style: none;
-  gap: 25px;
-  align-items: center;
-}
-
-nav a {
-  text-decoration: none;
-  color: var(--text);
-}
-
-#themeToggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-}
-
-/* ================= ABOUT ================= */
-
-.about-intro {
-  text-align: center;
-  padding: 80px 10%;
-  max-width: 800px;
-  margin: auto;
-}
-
-.about-intro h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-.about-intro p {
-  color: var(--secondary);
-  margin-bottom: 15px;
-}
-
-/* ================= TIMELINE ================= */
+/* ================= JOURNEY SECTION ================= */
 
 .journey-section {
-  padding: 100px 10%;
-  position: relative;
+  padding: 120px 10%;
 }
 
 .journey-section h2 {
   text-align: center;
-  font-size: 32px;
-  margin-bottom: 60px;
+  font-size: 36px;
+  margin-bottom: 80px;
 }
+
+/* ================= TIMELINE ================= */
 
 .timeline {
   position: relative;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
 }
 
+/* Base line */
 .timeline::before {
   content: "";
   position: absolute;
@@ -109,19 +62,22 @@ nav a {
   transform: translateX(-50%);
 }
 
+/* Progress line */
 .timeline-progress {
   position: absolute;
   left: 50%;
-  width: 2px;
+  width: 3px;
   height: 0;
-  background: var(--text);
+  background: var(--accent);
   transform: translateX(-50%);
   transition: height 0.2s ease-out;
 }
 
+/* ================= ITEMS ================= */
+
 .timeline-item {
   width: 50%;
-  padding: 40px;
+  padding: 50px;
   position: relative;
 }
 
@@ -134,64 +90,126 @@ nav a {
   left: 50%;
 }
 
+/* ================= CARD ================= */
+
 .timeline-content {
+  backdrop-filter: blur(12px);
   background: var(--card-bg);
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-  transition: 0.3s;
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+body.dark .timeline-content {
+  box-shadow: 0 8px 30px rgba(255,255,255,0.05);
 }
 
 .timeline-content:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
 }
+
+body.dark .timeline-content:hover {
+  box-shadow: 0 15px 40px rgba(255,255,255,0.08);
+}
+
+.timeline-content h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.timeline-content p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ================= ICON ================= */
 
 .timeline-icon {
   position: absolute;
-  top: 45px;
+  top: 60px;
   left: 100%;
   transform: translateX(-50%);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
   background: var(--bg);
   border: 2px solid var(--text);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 22px;
+  z-index: 10;
+  animation: pulse 2s infinite;
 }
 
 .timeline-item.right .timeline-icon {
   left: 0;
-  transform: translateX(-50%);
 }
 
-/* ================= FADE IN ================= */
+/* Pulse animation */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.3);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(0,0,0,0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0,0,0,0);
+  }
+}
+
+body.dark .timeline-icon {
+  animation: pulseDark 2s infinite;
+}
+
+@keyframes pulseDark {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255,255,255,0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(255,255,255,0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255,255,255,0);
+  }
+}
+
+/* ================= ANIMATION ================= */
 
 .fade-in {
   opacity: 0;
-  transform: translateY(30px);
-  transition: 0.8s ease;
+  transition: all 0.8s ease;
+}
+
+.timeline-item.left.fade-in {
+  transform: translateX(-60px);
+}
+
+.timeline-item.right.fade-in {
+  transform: translateX(60px);
 }
 
 .fade-in.show {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
 /* ================= MOBILE ================= */
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
 
   .timeline::before,
   .timeline-progress {
-    left: 20px;
+    left: 25px;
   }
 
   .timeline-item {
     width: 100%;
-    padding-left: 60px;
+    padding-left: 80px;
     padding-right: 20px;
   }
 
@@ -202,7 +220,6 @@ nav a {
   }
 
   .timeline-icon {
-    left: 20px !important;
-    transform: translateX(-50%);
+    left: 25px !important;
   }
 }
