@@ -1,35 +1,43 @@
-const body = document.body;
+// ================= DARK MODE =================
 const toggle = document.getElementById("themeToggle");
 
-// ================= THEME =================
-if (toggle) {
-  if (localStorage.getItem("theme") === "dark") {
-    body.classList.add("dark");
-    toggle.textContent = "☀️";
-  }
+toggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  toggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+});
 
-  toggle.addEventListener("click", () => {
-    body.classList.toggle("dark");
+// ================= SCROLL FADE IN =================
+const faders = document.querySelectorAll(".fade-in");
 
-    const isDark = body.classList.contains("dark");
-    toggle.textContent = isDark ? "☀️" : "🌙";
+const appearOptions = {
+  threshold: 0.2
+};
 
-    localStorage.setItem("theme", isDark ? "dark" : "light");
+const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add("show");
+    observer.unobserve(entry.target);
   });
-}
+}, appearOptions);
 
-// ================= JOURNEY FADE-IN =================
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
-    });
-  },
-  { threshold: 0.2 }
-);
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
 
-document.querySelectorAll(".fade-in").forEach((el) => {
-  observer.observe(el);
+// ================= TIMELINE PROGRESS =================
+const progress = document.querySelector(".timeline-progress");
+const timeline = document.querySelector(".timeline");
+
+window.addEventListener("scroll", () => {
+  const rect = timeline.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  const totalHeight = timeline.offsetHeight;
+  const visible = windowHeight - rect.top;
+
+  let progressHeight = Math.min(totalHeight, visible);
+  if (progressHeight < 0) progressHeight = 0;
+
+  progress.style.height = progressHeight + "px";
 });
