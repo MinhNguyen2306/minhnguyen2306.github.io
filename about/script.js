@@ -1,45 +1,60 @@
-document.addEventListener("DOMContentLoaded", function () {
+/* ======================
+   FADE-IN ON SCROLL
+====================== */
 
-  /* ================= DARK MODE ================= */
-  const toggle = document.getElementById("themeToggle");
+const elements = document.querySelectorAll(".fade, .timeline-item");
 
-  if (toggle) {
-    toggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-      toggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
-    });
-  }
-
-  /* ================= TIMELINE FADE ================= */
-
-  const items = document.querySelectorAll(".timeline-item");
-
-  const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver(
+  (entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("show");
       }
     });
-  }, { threshold: 0.3 });
+  },
+  { threshold: 0.25 }
+);
 
-  items.forEach(item => observer.observe(item));
+elements.forEach(el => observer.observe(el));
 
-  /* ================= TIMELINE PROGRESS ================= */
 
-  const progress = document.querySelector(".timeline-progress");
-  const timeline = document.querySelector(".timeline");
+/* ======================
+   DARK / LIGHT MODE
+====================== */
 
-  if (timeline && progress) {
-    window.addEventListener("scroll", () => {
-      const rect = timeline.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
+const toggleBtn = document.getElementById("themeToggle");
 
-      const totalHeight = timeline.offsetHeight;
-      const visible = windowHeight - rect.top;
-      const progressHeight = Math.min(totalHeight, Math.max(0, visible));
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+  if (toggleBtn) toggleBtn.textContent = "☀️";
+}
 
-      progress.style.height = progressHeight + "px";
-    });
-  }
+toggleBtn?.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
 
+  const isDark = document.body.classList.contains("dark");
+  toggleBtn.textContent = isDark ? "☀️" : "🌙";
+
+  localStorage.setItem("theme", isDark ? "dark" : "light");
 });
+
+
+/* ======================
+   TIMELINE PROGRESS
+====================== */
+
+const progress = document.querySelector(".timeline-progress");
+const timeline = document.querySelector(".timeline");
+
+if (timeline && progress) {
+  window.addEventListener("scroll", () => {
+    const rect = timeline.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    const totalHeight = timeline.offsetHeight;
+    const visible = windowHeight - rect.top;
+    const progressHeight = Math.min(totalHeight, Math.max(0, visible));
+
+    progress.style.height = progressHeight + "px";
+  });
+}
