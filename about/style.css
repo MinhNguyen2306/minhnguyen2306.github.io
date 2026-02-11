@@ -1,197 +1,178 @@
-/* ================= RESET ================= */
+/* ================= ROOT ================= */
+
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --secondary: #666;
+  --line: #e5e5e5;
+  --card-bg: #ffffff;
+}
+
+body.dark {
+  --bg: #0f0f0f;
+  --text: #ffffff;
+  --secondary: #aaa;
+  --line: #333;
+  --card-bg: #1a1a1a;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
-/* ================= THEME VARIABLES ================= */
-:root {
-  --bg: #ffffff;
-  --nav-bg: #ffffff;
-  --border: #e5e7eb;
-
-  --text-main: #0f172a;
-  --text-muted: #475569;
-  --accent: #2563eb;
-}
-
-/* DARK MODE */
-body.dark {
-  --bg: #020617;
-  --nav-bg: #020617;
-  --border: #1e293b;
-
-  --text-main: #e5e7eb;
-  --text-muted: #94a3b8;
-  --accent: #38bdf8;
-}
-
-/* ================= GLOBAL ================= */
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg);
-  color: var(--text-main);
-  line-height: 1.6;
-  transition: background 0.3s ease, color 0.3s ease;
+  color: var(--text);
+  transition: 0.3s ease;
 }
 
 /* ================= NAV ================= */
+
 nav {
-  background: var(--nav-bg);
-  border-bottom: 1px solid var(--border);
+  padding: 20px 10%;
+  border-bottom: 1px solid var(--line);
 }
 
 .nav-container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.logo {
-  font-weight: 700;
-}
-
 nav ul {
-  list-style: none;
   display: flex;
-  gap: 1.5rem;
+  list-style: none;
+  gap: 25px;
   align-items: center;
 }
 
 nav a {
   text-decoration: none;
-  color: var(--text-main);
-  font-weight: 500;
-}
-
-nav a:hover {
-  color: var(--accent);
+  color: var(--text);
 }
 
 #themeToggle {
-  background: transparent;
-  border: 1px solid var(--border);
-  padding: .4rem .6rem;
-  border-radius: 6px;
+  background: none;
+  border: none;
   cursor: pointer;
-  color: var(--text-main);
+  font-size: 18px;
 }
 
-/* ================= ABOUT INTRO ================= */
+/* ================= ABOUT ================= */
+
 .about-intro {
-  max-width: 900px;
-  margin: 6rem auto 4rem;
-  padding: 0 1.5rem;
   text-align: center;
-}
-
-.about-intro h1 {
-  font-size: 2.8rem;
-  margin-bottom: 1.2rem;
-}
-
-.intro-text {
-  max-width: 700px;
-  margin: 0.8rem auto;
-  color: var(--text-muted);
-}
-
-/* ================= TIMELINE ================= */
-/* ================= JOURNEY ================= */
-
-.journey {
-  padding: 4rem 1.5rem 6rem;
-}
-
-.journey h2 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 4rem;
-  color: var(--text-main);
-}
-
-/* track */
-.journey-track {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 900px;
+  padding: 80px 10%;
+  max-width: 800px;
   margin: auto;
 }
 
-/* center line */
-.journey-track::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--border);
-  transform: translateY(-50%);
+.about-intro h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
 }
 
-/* item */
-.journey-item {
-  width: 200px;
-  text-align: center;
+.about-intro p {
+  color: var(--secondary);
+  margin-bottom: 15px;
+}
+
+/* ================= TIMELINE ================= */
+
+.journey-section {
+  padding: 100px 10%;
   position: relative;
 }
 
-.journey-item.top {
-  transform: translateY(-120px);
+.journey-section h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 60px;
 }
 
-.journey-item.bottom {
-  transform: translateY(120px);
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
 }
 
-/* card */
-.journey-card {
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: var(--line);
+  transform: translateX(-50%);
+}
+
+.timeline-progress {
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  height: 0;
+  background: var(--text);
+  transform: translateX(-50%);
+  transition: height 0.2s ease-out;
+}
+
+.timeline-item {
+  width: 50%;
+  padding: 40px;
+  position: relative;
+}
+
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
+.timeline-content {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+}
+
+.timeline-icon {
+  position: absolute;
+  top: 45px;
+  left: 100%;
+  transform: translateX(-50%);
   background: var(--bg);
-  border: 1px solid var(--border);
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-
-.journey-card h3 {
-  color: var(--accent);
-  margin-bottom: .5rem;
-}
-
-.journey-card p {
-  color: var(--text-muted);
-  font-size: .9rem;
-  line-height: 1.5;
-}
-
-/* dot */
-.journey-dot {
-  width: 64px;
-  height: 64px;
-  margin: 1rem auto;
+  border: 2px solid var(--text);
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  border: 3px solid var(--accent);
-  background: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  color: var(--text-main);
+  font-size: 18px;
 }
 
-/* ================= ANIMATION ================= */
+.timeline-item.right .timeline-icon {
+  left: 0;
+  transform: translateX(-50%);
+}
+
+/* ================= FADE IN ================= */
 
 .fade-in {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.7s ease;
+  transition: 0.8s ease;
 }
 
 .fade-in.show {
@@ -199,14 +180,29 @@ nav a:hover {
   transform: translateY(0);
 }
 
-/* ================= ANIMATION ================= */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all .7s ease;
-}
+/* ================= MOBILE ================= */
 
-.fade-in.show {
-  opacity: 1;
-  transform: translateY(0);
+@media(max-width: 768px) {
+
+  .timeline::before,
+  .timeline-progress {
+    left: 20px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 60px;
+    padding-right: 20px;
+  }
+
+  .timeline-item.left,
+  .timeline-item.right {
+    left: 0;
+    text-align: left;
+  }
+
+  .timeline-icon {
+    left: 20px !important;
+    transform: translateX(-50%);
+  }
 }
